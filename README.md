@@ -1,7 +1,7 @@
 # Zen Browser - macOS Traffic Lights Window Controls
 
 This custom CSS theme replaces the standard Windows/Linux window control buttons (Close, Minimize, Maximize) in Zen Browser with the aesthetic macOS "Traffic Light" buttons.
-!assets/custom-window.png
+![preview result](https://github.com/momed081/Zen-Browser-Custom-Control-button/blob/main/asset/custom-window.png)
 ## 🎨 Features
 
 - **macOS Styling**: Replaces square buttons with the iconic Red, Yellow, and Green circles.
