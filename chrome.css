@@ -1,0 +1,111 @@
+/* CONTAINER SETUP */
+/* Aligns the button group horizontally and centers them */
+.titlebar-buttonbox {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px;        /* Adds space between the colored dots */
+  padding: 0 12px !important;
+}
+
+/* BASE BUTTON STYLING */
+/* Defines the shape and size of all three buttons */
+.titlebar-button {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important; /* Makes the buttons perfect circles */
+  padding: 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important; /* A faint border for definition */
+  transition: background-color 0.2s ease, opacity 0.2s ease !important; /* Smooth color changes */
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex; /* Flex enables centering of the symbols (X, -, etc) later */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+/* BASE COLORS (The "Traffic Lights") */
+/* Red for Close */
+.titlebar-close {
+  background-color: #ff5f57 !important;
+}
+
+/* Yellow/Orange for Minimize */
+.titlebar-min {
+  background-color: #febc2e !important;
+}
+
+/* Green for Maximize/Restore */
+.titlebar-max,
+.titlebar-restore {
+  background-color: #28c940 !important;
+}
+
+/* HOVER COLORS */
+/* Makes the colors slightly darker/richer when the mouse is over them */
+.titlebar-close:hover {
+  background-color: #ff3b30 !important;
+}
+
+.titlebar-min:hover {
+  background-color: #fea722 !important;
+}
+
+.titlebar-max:hover,
+.titlebar-restore:hover {
+  background-color: #1daf4c !important;
+}
+
+/* SYMBOL CONFIGURATION (The icons inside the dots) */
+/* Sets up the hidden text element that will appear inside the circle */
+.titlebar-button::after {
+  content: ""; /* Empty by default */
+  position: absolute;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 14px; 
+  color: rgba(0, 0, 0, 0.6); /* Dark grey text */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s ease;
+  /* Perfectly centers the text symbol */
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}
+
+/* HOVER SYMBOLS */
+/* Reveals specific symbols when hovering over specific buttons */
+
+/* Shows '×' on the Close button */
+.titlebar-close:hover::after {
+  content: "×";
+  opacity: 1;
+}
+
+/* Shows '-' on the Minimize button */
+.titlebar-min:hover::after {
+  content: "-";
+  opacity: 1;
+}
+
+/* Shows '⤢' (diagonal arrows) on Maximize/Restore */
+.titlebar-max:hover::after,
+.titlebar-restore:hover::after {
+  content: "⤢";
+  opacity: 1;
+}
+
+/* ACTIVE STATE */
+/* Makes the button slightly transparent when actually clicked */
+.titlebar-button:active {
+  opacity: 0.8 !important;
+}
+
+/* CLEANUP */
+/* Hides the browser's default native icons so they don't clash with our new CSS symbols */
+.titlebar-button image {
+  display: none !important;
+}
+
