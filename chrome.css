@@ -1,111 +1,93 @@
-/* CONTAINER SETUP */
-/* Aligns the button group horizontally and centers them */
+/* ========================================= */
+/* MACOS TRAFFIC LIGHT BUTTONS (REPO STYLE) */
+/* ========================================= */
+
+/* Container Setup */
 .titlebar-buttonbox {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 10px;        /* Adds space between the colored dots */
-  padding: 0 12px !important;
+  gap: 8px !important;
+  padding: 0 5px !important;
 }
 
-/* BASE BUTTON STYLING */
-/* Defines the shape and size of all three buttons */
+/* Base Button Styling */
 .titlebar-button {
+  appearance: none !important;
   width: 14px !important;
   height: 14px !important;
-  border-radius: 50% !important; /* Makes the buttons perfect circles */
+  min-width: 14px !important;
+  min-height: 14px !important;
+  border-radius: 50% !important;
   padding: 0 !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important; /* A faint border for definition */
-  transition: background-color 0.2s ease, opacity 0.2s ease !important; /* Smooth color changes */
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex; /* Flex enables centering of the symbols (X, -, etc) later */
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  margin: 0 !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 8px !important;
+  transition: background-color 0.1s ease, border-color 0.1s ease !important;
   cursor: pointer;
+  /* Repo "Normal" State Base Borders */
+  border: 1px solid transparent !important;
 }
 
-/* BASE COLORS (The "Traffic Lights") */
-/* Red for Close */
-.titlebar-close {
-  background-color: #ff5f57 !important;
-}
-
-/* Yellow/Orange for Minimize */
-.titlebar-min {
-  background-color: #febc2e !important;
-}
-
-/* Green for Maximize/Restore */
-.titlebar-max,
-.titlebar-restore {
-  background-color: #28c940 !important;
-}
-
-/* HOVER COLORS */
-/* Makes the colors slightly darker/richer when the mouse is over them */
-.titlebar-close:hover {
-  background-color: #ff3b30 !important;
-}
-
-.titlebar-min:hover {
-  background-color: #fea722 !important;
-}
-
-.titlebar-max:hover,
-.titlebar-restore:hover {
-  background-color: #1daf4c !important;
-}
-
-/* SYMBOL CONFIGURATION (The icons inside the dots) */
-/* Sets up the hidden text element that will appear inside the circle */
-.titlebar-button::after {
-  content: ""; /* Empty by default */
-  position: absolute;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: bold;
-  font-size: 14px; 
-  color: rgba(0, 0, 0, 0.6); /* Dark grey text */
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.2s ease;
-  /* Perfectly centers the text symbol */
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%); 
-}
-
-/* HOVER SYMBOLS */
-/* Reveals specific symbols when hovering over specific buttons */
-
-/* Shows '×' on the Close button */
-.titlebar-close:hover::after {
-  content: "×";
-  opacity: 1;
-}
-
-/* Shows '-' on the Minimize button */
-.titlebar-min:hover::after {
-  content: "-";
-  opacity: 1;
-}
-
-/* Shows '⤢' (diagonal arrows) on Maximize/Restore */
-.titlebar-max:hover::after,
-.titlebar-restore:hover::after {
-  content: "⤢";
-  opacity: 1;
-}
-
-/* ACTIVE STATE */
-/* Makes the button slightly transparent when actually clicked */
-.titlebar-button:active {
-  opacity: 0.8 !important;
-}
-
-/* CLEANUP */
-/* Hides the browser's default native icons so they don't clash with our new CSS symbols */
-.titlebar-button image {
+/* Hide Default Native Icons */
+.titlebar-button > .toolbarbutton-icon,
+.titlebar-button > image {
   display: none !important;
 }
 
+/* --- COLORS (Based on lwouis/macos-traffic-light-buttons-as-SVG) --- */
+
+/* 1. CLOSE (RED) */
+/* Normal */
+.titlebar-close {
+  background-color: #ed6a5f !important;
+  border-color: #e24b41 !important;
+}
+/* Hover - Repo uses specific dark red symbol #460804 */
+.titlebar-close:hover {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L8 8M8 2L2 8' stroke='%23460804' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+/* Pressed - Repo values: Fill b15048, Border a14239 */
+.titlebar-close:active {
+  background-color: #b15048 !important;
+  border-color: #a14239 !important;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L8 8M8 2L2 8' stroke='%23170101' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+
+/* 2. MINIMIZE (YELLOW) */
+/* Normal */
+.titlebar-min {
+  background-color: #f6be50 !important;
+  border-color: #e1a73e !important;
+}
+/* Hover - Repo uses specific brownish symbol #90591d */
+.titlebar-min:hover {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='2' viewBox='0 0 10 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1H9' stroke='%2390591d' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+}
+/* Pressed - Repo values: Fill b8923b, Border a67f36 */
+.titlebar-min:active {
+  background-color: #b8923b !important;
+  border-color: #a67f36 !important;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='2' viewBox='0 0 10 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1H9' stroke='%23532a0a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+}
+
+/* 3. MAXIMIZE (GREEN) */
+/* Normal */
+.titlebar-max,
+.titlebar-restore {
+  background-color: #61c555 !important;
+  border-color: #2dac2f !important;
+}
+/* Hover - Repo uses specific dark green symbol #2a6218 */
+.titlebar-max:hover,
+.titlebar-restore:hover {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8L8 2M8 2H4M8 2V6' stroke='%232a6218' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 8V4M2 8H6' stroke='%232a6218' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+/* Pressed - Repo values: Fill 4a9741, Border 428234 */
+.titlebar-max:active,
+.titlebar-restore:active {
+  background-color: #4a9741 !important;
+  border-color: #428234 !important;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8L8 2M8 2H4M8 2V6' stroke='%23113107' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 8V4M2 8H6' stroke='%23113107' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
