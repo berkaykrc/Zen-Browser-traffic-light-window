@@ -1,4 +1,51 @@
 /* ========================================= */
+/* GLOBAL FONT SETTINGS                */
+/* ========================================= */
+* {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* ========================================= */
+/* ZEN BROWSER LAYOUT FIXES            */
+/* ========================================= */
+
+/* Handle Vertical Tabs Layout */
+@media -moz-pref("zen.tabs.vertical") {
+  #zen-sidebar-top-buttons {
+    margin: 0 !important;
+    flex-direction: row-reverse !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    padding: 10px 0 !important;
+  }
+
+  /* Reset margins on window controls */
+  .titlebar-buttonbox-container,
+  .titlebar-buttonbox {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+/* Hide Workspace Indicator in Sidebar */
+vbox.zen-workspace-tabs-section.zen-current-workspace-indicator {
+  display: none !important;
+}
+
+/* Hide Separator */
+#zen-sidebar-top-buttons-separator {
+  display: none !important;
+}
+
+/* Fix for Customization Target */
+#zen-sidebar-top-buttons-customization-target {
+  padding-right: 0 !important;
+  justify-content: space-evenly;
+}
+
+/* ========================================= */
 /* MACOS TRAFFIC LIGHT BUTTONS (REPO STYLE) */
 /* ========================================= */
 
@@ -7,8 +54,8 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  padding: 0 5px !important;
+  gap: 10px !important;
+  padding: 0 5px !important; 
 }
 
 /* Base Button Styling */
@@ -27,7 +74,7 @@
   transition: background-color 0.1s ease, border-color 0.1s ease !important;
   cursor: pointer;
   /* Repo "Normal" State Base Borders */
-  border: 1px solid transparent !important;
+  border: 1px solid transparent !important; 
 }
 
 /* Hide Default Native Icons */
@@ -90,4 +137,11 @@
   background-color: #4a9741 !important;
   border-color: #428234 !important;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8L8 2M8 2H4M8 2V6' stroke='%23113107' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 8V4M2 8H6' stroke='%23113107' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+/* 4. WINDOW INACTIVE STATE (Matches 0-all-three-nofocus.svg) */
+/* When the browser window is not focused, all buttons turn grey */
+.titlebar-button:-moz-window-inactive {
+  background-color: #dddddd !important;
+  border-color: #d1d1d1 !important;
+  background-image: none !important;
 }
